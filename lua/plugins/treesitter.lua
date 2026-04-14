@@ -1,13 +1,13 @@
+-- lua/plugins/treesitter.lua
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  config = function()
-    local config = require("nvim-treesitter.configs")
-    config.setup({
-      ensure_installed = { "lua", "c_sharp" },
-      sync_install = false,
-      highlight = { enable = true },
-      indent = { enable = true },
-    })
+  opts = {
+    ensure_installed = { "lua", "c_sharp", "json", "yaml", "dockerfile", "bash" },
+    highlight = { enable = true },
+    indent = { enable = true },
+  },
+  config = function(_, opts)
+    require("nvim-treesitter").setup(opts)
   end,
 }
